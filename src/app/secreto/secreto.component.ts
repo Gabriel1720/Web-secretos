@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
+import {ActivatedRoute} from '@angular/router'
 import { ApiSecretosService } from '../api-secretos.service';
 import { ISecreto } from './ISecreto';
 
@@ -11,7 +11,8 @@ import { ISecreto } from './ISecreto';
 export class SecretoComponent implements OnInit {
   lista_secretos:ISecreto[] = []; 
 
-  constructor(private service: ApiSecretosService) { }
+  constructor(private service: ApiSecretosService,
+              private route: ActivatedRoute){ }
 
   ngOnInit(): void {
        this.service.listaSecretos().subscribe(secreto_list => {
@@ -21,5 +22,16 @@ export class SecretoComponent implements OnInit {
               console.log(secreto)
          });
        })
+
+       this.delete();
+  }
+
+  delete(){
+    this.route.paramMap.subscribe(param => {
+      console.log(param);
+      this.service.deleteSecreto(param.get('id')).subscribe(estatus => {
+           console.log(estatus.Borrado)
+      })
+     })
   }
 }

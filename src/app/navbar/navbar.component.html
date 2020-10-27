@@ -1,5 +1,5 @@
 <header class="w-100">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100 p-4">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark w-100 p-2">
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
@@ -7,7 +7,7 @@
                <div class="collapse navbar-collapse" id="navbarSupportedContent">   
                 <ul class="navbar-nav mr-auto">
                      <li class="nav-item"><a [routerLink]="'/secretos'" class="nav-link">Secretos</a></li>
-                     <li class="nav-item"><a [routerLink]="'/login'" class="nav-link">Nuevo</a></li>
+                     <li class="nav-item"><a [routerLink]="'/nuevo'" class="nav-link">Nuevo</a></li>
                      <li class="nav-item"><a [routerLink]="'/login'" class="nav-link">Ajustes</a></li>
                 </ul>
                 <div *ngIf="islogged(); else logout">
