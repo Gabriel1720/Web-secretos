@@ -2,10 +2,15 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams}  from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { IConfig } from './config/config'
+import { JwtHelperService } from '@auth0/angular-jwt';
  
+const jwtHelper = new JwtHelperService();
+
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class ApiSecretosService {
    
   constructor(private http: HttpClient) { }
@@ -13,8 +18,12 @@ export class ApiSecretosService {
    
   isAuthenticated(): boolean{
      const token = JSON.parse(localStorage.getItem("token"))
-   //  return !this.jwt_token.isTokenExpired(token.access_token)
-    return true
+     if (token){
+        return true; 
+     } else {
+        return false ; 
+     }
+    // return !jwtHelper.isTokenExpired(token.access_token)
   }
 
   login(credenciales): Observable<IConfig>{

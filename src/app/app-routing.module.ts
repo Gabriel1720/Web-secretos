@@ -12,11 +12,10 @@ import { AuthGuardService as AuthGuard} from './auth-guard.service'
 const routes: Routes = [{path:'', component: HomeComponent },
                         {path :'signup', component : RegistroUsuarioComponent},
                         {path :'login', component : UsuarioLoginComponent},
-                        {path :'secretos', component : SecretoComponent},
-                        {path :'secretos/:id', component : SecretoComponent},
-                        {path:"nuevo", component : NuevoSecretoComponent},
-                        {path : "ajustes", component : AjustesComponent},
-                        {path :'logout', redirectTo : 'login'}];
+                        {path :'secretos', component : SecretoComponent, canActivate : [AuthGuard]},
+                        {path:"nuevo", component : NuevoSecretoComponent, canActivate : [AuthGuard]},
+                        {path : "ajustes", component : AjustesComponent, canActivate : [AuthGuard]}
+                      ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

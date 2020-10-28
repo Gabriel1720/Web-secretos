@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule}  from '@angular/forms'
-import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,7 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NuevoSecretoComponent } from './nuevo-secreto/nuevo-secreto.component';
 import { AjustesComponent } from './ajustes/ajustes.component';
-
+ 
+ 
  
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { AjustesComponent } from './ajustes/ajustes.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

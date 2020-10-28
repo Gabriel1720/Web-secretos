@@ -1,15 +1,15 @@
 <div class="container">
-    <div class="d-flex justify-content-center"style="height: 70vh;" >
+    <div class="d-flex justify-content-center"style="height: 60vh;" >
       <div class="w-75 align-self-center">
             <form [formGroup]="logInForm" (ngSubmit)="onSubmit(logInForm.value)"  class="text-center mx-auto align-self-center">
-                <h2 class="mb-4">Iniciar Seccion</h2>
+                <h2 class="mb-4">INICIAR SESSION</h2>
             <div class="form-group my-2">
-                <input type="email" class="form-control w-50 mx-auto" placeholder="Correo electronico." formControlName="username">
+                <input type="email" class="form-control w-50 mx-auto p-4" placeholder="Correo electronico." formControlName="username">
             </div>
             <div class="form-group my-2">
-                <input type="password" class="form-control w-50 mx-auto" placeholder="Contraseña" formControlName="password">
+                <input type="password" class="form-control w-50 mx-auto p-4"  placeholder="Contraseña" formControlName="password">
             </div>
-            <button class="btn btn-danger px-4 w-25">Log In</button>
+            <button class="btn bg-gradient text-white mt-2 px-4 py-2 w-25 border-0">Log In</button>
         </form>
       </div>
    </div>

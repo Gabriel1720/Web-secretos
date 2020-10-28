@@ -1,15 +1,17 @@
 <div class="container mt-5">
+    <div class="d-flex justify-content-center"style="height: 60vh;" >
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)" class="text-center mx-auto w-75 align-self-center">
-        <h2 class="mb-4">Registar Mi Cuenta</h2>
+        <h2 class="mb-4">REGISTAR MI CUENTA</h2>
         <div class="form-group my-2">
-            <input type="text" class="form-control w-50 mx-auto" placeholder="Nombre de usuario." formControlName="nombre">
+            <input type="text" class="form-control w-50 mx-auto p-4 m-2" placeholder="Nombre de usuario." formControlName="nombre">
         </div>
         <div class="form-group my-2">
-            <input type="email" class="form-control w-50 mx-auto" placeholder="Correo electronico." formControlName="correo">
+            <input type="email" class="form-control w-50 mx-auto p-4 m-2" placeholder="Correo electronico." formControlName="correo">
         </div>
         <div class="form-group my-2">
-            <input type="password" class="form-control w-50 mx-auto" placeholder="Contraseña." formControlName="password">
+            <input type="password" class="form-control w-50 mx-auto p-4 m-2" placeholder="Contraseña." formControlName="password">
         </div>
-        <button class="btn btn-danger px-4 w-25">Sing Up</button>
+        <button class="btn bg-gradient text-white mt-2 px-4 py-2 w-25 border-0">Sing Up</button>
     </form>
+    </div>
 </div>
