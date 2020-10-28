@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <form [formGroup]="modificarDatos" (ngSubmit)="onSubmitDatos(modificarDatos.value)" class="text-center bg-white p-4 mx-auto w-50">
+        <h3 class="mb-4">Datos de la cuenta:</h3>
+        <div class="form-group my-2">
+            <input type="text" class="form-control mx-auto w-75 " placeholder="Nombre de usuario." formControlName="nombre">
+        </div>
+        <div class="form-group my-2">
+            <input type="email" class="form-control mx-auto w-75 " placeholder="Correo electronico." formControlName="correo">
+        </div>
+        <button class="px-4 btn btn-dark w-50">Guardar</button>
+    </form>
+</div>
+
+<div class="container my-5">
+    <form [formGroup]="modificarPass" (ngSubmit)="onSubmitPass(modificarPass.value)" class="text-center bg-white p-4  mx-auto w-50">
+        <h3 class="mb-4">Modificar Contraseña:</h3>
+        <div class="form-group my-2">
+            <input type="password" class="form-control w-75 mx-auto" placeholder="Contraseña Anterior" formControlName="claveAnterior">
+        </div>
+        <div class="form-group my-2">
+            <input type="password" class="form-control w-75 mx-auto" placeholder="Nueva Contraseña" formControlName="claveNueva">
+        </div>
+        <button class="btn btn-dark px-4 w-50">Guardar</button>
+    </form>
+</div>

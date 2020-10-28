@@ -5,6 +5,7 @@ import { RegistroUsuarioComponent }  from './registro-usuario/registro-usuario.c
 import {UsuarioLoginComponent} from './usuario-login/usuario-login.component'
 import {SecretoComponent} from './secreto/secreto.component'
 import {NuevoSecretoComponent} from './nuevo-secreto/nuevo-secreto.component'
+import {AjustesComponent} from './ajustes/ajustes.component'
 import { AuthGuardService as AuthGuard} from './auth-guard.service'
 
 
@@ -14,6 +15,7 @@ const routes: Routes = [{path:'', component: HomeComponent },
                         {path :'secretos', component : SecretoComponent},
                         {path :'secretos/:id', component : SecretoComponent},
                         {path:"nuevo", component : NuevoSecretoComponent},
+                        {path : "ajustes", component : AjustesComponent},
                         {path :'logout', redirectTo : 'login'}];
 
 @NgModule({
