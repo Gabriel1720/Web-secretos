@@ -30,7 +30,7 @@ import { AjustesComponent } from './ajustes/ajustes.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
+    HttpClientModule
 
   ],
   providers: [],

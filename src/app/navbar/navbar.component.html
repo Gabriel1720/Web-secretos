@@ -1,24 +1,24 @@
-<div class="container-fluid px-5 border-bottom" style="background-color: #fafafa;">
+<div class="container-fluid-md border-bottom" style="background-color: #fafafa;">
    <header class="w-100">
-      <nav class="navbar navbar-expand-md w-100 ">
+      <nav class="navbar navbar-expand-sm  navbar-light w-100 ">
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
          
          <div class="collapse navbar-collapse" id="navbarSupportedContent">   
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav mr-auto px-md-5">
                <li class="nav-item"><a [routerLink]="'/secretos'" class="nav-link primary-color">Secretos</a></li>
                <li class="nav-item"><a [routerLink]="'/nuevo'" class="nav-link primary-color">Nuevo</a></li>
                <li class="nav-item"><a [routerLink]="'/ajustes'" class="nav-link primary-color">Ajustes</a></li>
           </ul>
           <div *ngIf="islogged(); else logout">
-               <ul class="navbar-nav ml-auto">
-                  <li class="nav-item"><a [routerLink]="'/login'" class="nav-link mx-4 primary-color">Log in</a></li>
-                  <li class="nav-item"><a [routerLink]="'/signup'" class="nav-link text-white bg-danger  px-4 rounded bg-gradient">Sign up</a></li>
+               <ul class="navbar-nav ml-auto px-md-5">
+                  <li class="nav-item"><a [routerLink]="'/login'" class="nav-link primary-color">Log in</a></li>
+                  <li class="nav-item"><a [routerLink]="'/signup'" class="nav-link text-white bg-danger px-4 rounded bg-gradient">Sign up</a></li>
             </ul>
          </div>
             <ng-template  #logout>
-               <ul class="navbar-nav ml-auto">
+               <ul class="navbar-nav ml-auto px-md-5">
                   <li class="nav-item"><a (click)="cerrarSession()" class="nav-link rounded text-white bg-gradient px-4" style="cursor: pointer;" >Log Out</a></li>
             </ul>
             </ng-template >

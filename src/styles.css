@@ -31,3 +31,12 @@ h1, h2, h3, h4 {
 .circular-img{
      border-radius: 50%;
 }
+
+.danger{
+    color: rgb(247, 70, 70);
+}
+
+
+.success{
+    color: rgb(42, 173, 64);
+}

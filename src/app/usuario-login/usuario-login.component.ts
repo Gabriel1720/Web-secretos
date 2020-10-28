@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder} from '@angular/forms'
+import {FormBuilder, FormControl, Validators} from '@angular/forms'
 import {ApiSecretosService} from '../api-secretos.service'
 import {Router} from '@angular/router'
  
@@ -10,24 +10,42 @@ import {Router} from '@angular/router'
 })
 export class UsuarioLoginComponent implements OnInit {
   logInForm; 
-  constructor(private formBuilder: FormBuilder, private service:ApiSecretosService, private router: Router) {
-     this.logInForm = this.formBuilder.group({
-       username: '',
-       password : ''
-     })
-   }
+  canLog:boolean; 
+
+  constructor(private formBuilder: FormBuilder,
+               private service:ApiSecretosService,
+               private router: Router) { }
 
   ngOnInit(): void {
+    this.logInForm = this.formBuilder.group({
+      username: new FormControl('', [
+        Validators.required,
+        Validators.pattern("[^ @]*@[^ @]*")
+      ]),
+      password : new FormControl('', Validators.required)
+    })
   }
 
   onSubmit(credenciales){
+       const loader  =  document.getElementById("loader");
+       if (credenciales.username != "" && credenciales.password != "") {
+            loader.classList.add('dot-flashing');
+       }
+
       this.service.login(credenciales).subscribe(log => {
-        console.log(log.access_token)
-        if(log.estado){
-          localStorage.setItem("token" , JSON.stringify(log))
-          this.router.navigate(['/secretos']) ;
+        console.log(log)
+        loader.classList.remove('dot-flashing');
+         
+        if (!log.estado){
+            this.canLog = !log.estado;
+        }
+        
+       else  if(log.estado){
+           localStorage.setItem("token" , JSON.stringify(log))
+           this.router.navigate(['/secretos']) ;
         } 
-      });
+      })
+     
   }
 
 }
