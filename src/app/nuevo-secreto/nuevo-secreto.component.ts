@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder} from '@angular/forms'
+import {FormBuilder, FormControl, Validators} from '@angular/forms'
 import { ApiSecretosService } from '../api-secretos.service';
 
 @Component({
@@ -9,32 +9,49 @@ import { ApiSecretosService } from '../api-secretos.service';
 })
 export class NuevoSecretoComponent implements OnInit {
     nuevoSecreto ; 
-
+    camposVacios:boolean; 
   constructor(private formBuilder: FormBuilder, private servicio: ApiSecretosService) { }
 
   ngOnInit(): void {
        this.nuevoSecreto = this.formBuilder.group({
-        descripcion: '',
-        fecha:'',
-        lat:'',
-        lon:'',
-        lugar:'',
-        titulo:'',
-        valor_monetario: ''
+        descripcion: new FormControl('', Validators.required),
+        fecha:new FormControl('', Validators.required),
+        lat: new FormControl('', Validators.required),
+        lon:new FormControl('', Validators.required),
+        lugar:new FormControl('', Validators.required),
+        titulo:new FormControl('', Validators.required),
+        valor_monetario: new FormControl('', Validators.required)
        })
   }
 
   onSubmit(secreto):void{
-      console.log(secreto);
-      this.servicio.nuevoSecreto(secreto).subscribe(info => {
-          console.log("code", info.status_code);
-          if(info.status_code == 200){
-             this.nuevoSecreto.reset(); 
-          } else {
-            alert("error al crear el secreto.")
-          }
-      }); 
+      this.camposVacios = this.validarDatos(secreto); 
+  
+      if (!this.camposVacios){
+            this.servicio.nuevoSecreto(secreto).subscribe(info => {
+              console.log("code", info.status_code);
+              if(info.status_code == 200){
+                this.nuevoSecreto.reset(); 
+              } else {
+                   alert("error al crear el secreto.")
+              }
+          }); 
+      }
+  }
 
+
+  validarDatos(secreto):boolean{
+        console.log(secreto);
+        for (const key in secreto) {
+          if (Object.prototype.hasOwnProperty.call(secreto, key)) {
+              const element = secreto[key];  
+              if(element == ""){
+                return true;   
+              }
+          }
+        } 
+
+        return false ; 
   }
 
 }

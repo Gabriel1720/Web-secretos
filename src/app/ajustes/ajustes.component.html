@@ -20,6 +20,9 @@
         <div class="form-group my-2">
             <input type="password" class="form-control w-75 mx-auto border p-4 m-2" placeholder="Nueva Contraseña" formControlName="claveNueva">
         </div>
+        <div *ngIf="canChangePass">
+            <p class="danger">Clave anterior es incorrecta.</p>
+        </div>
         <button class="btn bg-gradient text-white m-2">Modificar contraseña</button>
     </form>
 </div>

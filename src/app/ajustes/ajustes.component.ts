@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder} from '@angular/forms'
+import {FormBuilder, FormControl} from '@angular/forms'
 import { ApiSecretosService } from '../api-secretos.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { ApiSecretosService } from '../api-secretos.service';
 export class AjustesComponent implements OnInit {
   modificarPass; 
   modificarDatos ; 
+  canChangePass:boolean;
 
   constructor(private formBuilder: FormBuilder,
                private service: ApiSecretosService) { }
@@ -26,13 +27,13 @@ export class AjustesComponent implements OnInit {
 
   createForm(_nombre:string, _correo:string): void{
         this.modificarDatos =  this.formBuilder.group({
-          nombre : _nombre ,
-          correo : _correo
+          nombre : new FormControl(_nombre) ,
+          correo : new FormControl(_correo)
         })
         
       this.modificarPass =  this.formBuilder.group({
-          claveAnterior: '',
-          claveNueva : ''
+          claveAnterior: new FormControl(''),
+          claveNueva : new FormControl('')
         })
   }
 
@@ -45,10 +46,10 @@ export class AjustesComponent implements OnInit {
   onSubmitPass(datos):void{
       this.service.updatePassword(datos).subscribe( callback => {
            if(callback.status_code == 400){
-                alert("La clave no escorrecta.");
+                 this.canChangePass = true; 
            } else {
-               alert("Sea cambiado la contraseña.")
                this.modificarPass.reset();
+               this.canChangePass = false ; 
            }
       })
   }
